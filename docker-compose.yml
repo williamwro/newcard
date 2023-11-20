@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  web:
+    build: .
+    container_name: web_image
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./site:/var/www/html
+  db:
+    image: postgres:12.14
+    container_name: pg
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: Abc25149076
+      POSTGRES_USER: postgres
+      POSTGRES_DB: affe
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
